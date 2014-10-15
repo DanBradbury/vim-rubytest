@@ -64,7 +64,7 @@ function s:ExecTest(cmd)
     let s:oldefm = &efm
     let &efm = s:efm . s:efm_backtrace . ',' . s:efm_ruby . ',' . s:oldefm . ',%-G%.%#'
 
-    cex system(cmd)
+    cgete substitute(system(cmd), '\[', '', 'g')
     redraw!
     botright copen
 
